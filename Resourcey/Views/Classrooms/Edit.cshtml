@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Resourcey.Models.Classroom
+
+<h2> Edit </h2>
+
+<h4>Edit this course: @Html.DisplayFor(model => model.CourseName)</h4>
+
+@using (Html.BeginForm())
+{
+   @Html.HiddenFor(model => model.ClassroomId)
+
+    @Html.LabelFor(model => model.CourseName)
+    @Html.EditorFor(model => model.CourseName)
+
+    <input type="submit" value="save" />
+}
+
+<p>@Html.ActionLink("Back to Classes", "Index")</p>

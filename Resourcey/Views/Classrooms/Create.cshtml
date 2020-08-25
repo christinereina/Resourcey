@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Resourcey.Models.Classroom
+
+<h1>New Classroom</h1>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.CourseName)
+  @Html.TextBoxFor(model => model.CourseName)
+
+  <input type="submit" value="Add Classroom" class="btn-btn-default"/>
+
+}
+
+@Html.ActionLink("Home", "Index", "Home")

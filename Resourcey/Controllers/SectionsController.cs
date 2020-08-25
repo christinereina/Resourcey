@@ -13,12 +13,12 @@ using System.Security.Claims;
 namespace Resourcey.Controllers
 {
 [Authorize]
-public class SectionController : Controller
+public class SectionsController : Controller
   {
     private readonly ApplicationDbContext _db;
     private readonly UserManager <ApplicationUser> _userManager;
 
-    public SectionController (UserManager<ApplicationUser> userManager, ApplicationDbContext db)
+    public SectionsController (UserManager<ApplicationUser> userManager, ApplicationDbContext db)
     {
       _userManager = userManager;
       _db = db;

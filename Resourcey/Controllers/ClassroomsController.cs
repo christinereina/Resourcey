@@ -14,13 +14,13 @@ namespace Resourcey.Controllers
 {
 
 [Authorize]
-public class ClassroomController : Controller
+public class ClassroomsController : Controller
   {
     
     private readonly ApplicationDbContext _db; 
     private readonly UserManager <ApplicationUser> _userManager; 
 
-    public ClassroomController (UserManager<ApplicationUser> userManager, ApplicationDbContext db)
+    public ClassroomsController (UserManager<ApplicationUser> userManager, ApplicationDbContext db)
     {
       _userManager = userManager; 
       _db = db; 
