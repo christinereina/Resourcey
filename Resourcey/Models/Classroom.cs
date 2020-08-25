@@ -11,10 +11,7 @@ namespace Resourcey.Models
     }
     public string CourseName {get; set;}
     public int ClassroomId {get; set;}
-    public string ClassroomCreator {get; set;}
+    public virtual ApplicationUser ClassroomCreator {get; set;}
     public ICollection<Section> Sections {get;}
-
-
-
   }
 }
