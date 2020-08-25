@@ -6,8 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Resourcey.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser> // Will users go in here? as 
     {
+
+
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

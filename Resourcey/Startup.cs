@@ -42,7 +42,7 @@ namespace Resourcey
                 .AddDbContext<ApplicationDbContext>(options => options
                 .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
 
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<ApplicationUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
