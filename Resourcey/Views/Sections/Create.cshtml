@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Resourcey.Models.Section
+
+<h1>Add a new section</h1>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+
+  @Html.HiddenFor(model => model.ClassroomId)
+
+  <input type="submit" value="Add new section" class="btn btn-default"/>
+}
+
+@Html.ActionLink("Back to Classroom", "Index", "Classrooms")

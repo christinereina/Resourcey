@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Resourcey.Models.Resource
+
+<h2>Edit</h2>
+
+<h4>Edit this resource: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.ResourceId)
+
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    @Html.Label("Type of Resource")
+    @Html.DropDownList("ResourceType") //Link to enums??
+
+    <input type="submit" value="Save" />
+}
+
+@Html.ActionLink("Back to Classroom", "Index", "Classrooms")

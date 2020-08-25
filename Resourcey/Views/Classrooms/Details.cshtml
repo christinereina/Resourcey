@@ -6,7 +6,7 @@
 
 <h2>Class Details</h2>
 
-<h3>@Html.DisplayNameFor(model => model.CourseName): @Html.DisplayFor(model => model.CourseName)</h3>
+<h3>Course Name: @Html.DisplayFor(model => model.CourseName)</h3>
 
 @if(Model.Sections.Count == 0)
 {
@@ -23,8 +23,8 @@ else
   }
 </ul>
 }
-
-
+@Model.ClassroomId
+<p>@Html.ActionLink("Add a section", "Create", "Sections", new {id = Model.ClassroomId})</p>
 <p>@Html.ActionLink("Back to Courses", "Index")</p>
 <p>@Html.ActionLink("Edit Course", "Edit", new { id = Model.ClassroomId })</p>
 <p>@Html.ActionLink("Delete Class", "Delete", new { id = Model.ClassroomId })</p>

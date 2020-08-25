@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Resourcey.Models.Section
+
+<h1>Section Details</h1>
+<hr/>
+
+<h2>@Html.DisplayFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h2>
+
+@if(@Model.Resources.Count == 0)
+{
+  <p>This section doesn't have any resources.</p>
+}
+else
+{
+  <h3>Resources in this section:</h3>
+  <ul>
+    @foreach (var resource in Model.Resources)
+    {
+      @Html.ActionLink($"{resource.Name}", "Details", new { id = resource.ResourceId } )
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to classroom", "Classroms", "Details", new { id = Model.ClassroomId })</p>
+<p>@Html.ActionLink("Edit section", "Edit", new { id = Model.SectionId })</p>
+<p>@Html.ActionLink("Delete section", "Delete", new { id = Model.SectionId })</p>
