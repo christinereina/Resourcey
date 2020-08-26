@@ -1,25 +1,22 @@
-@{
-  Layout = "_Layout";
-}
-
-@using Resourcey.Models;
-@using System.Security.Claims;
-@model IEnumerable<Resourcey.Models.Classroom>
-
-<h1>Classroom</h1>
-
-@if (@Model.Any())
-{
-
-  @foreach (Classroom classroom in Model)
-  {
-    @Html.ActionLink($"{classroom.CourseName}", "Details", new { id = classroom.ClassroomId } )
+  @{
+    Layout = "_Layout";
   }
+
+@using Resourcey.Models
+@model List<Resourcey.Models.Classroom>
+
+<h1>Classrooms</h1>
+
+@if(@Model.Count == 0)
+{
+  <h1>There are no classrooms!</h1>
 }
 else
 {
-    <h2>No Classrooms have been added just yet!</h2>
+  @foreach(Classroom classroom in Model)
+  {
+    <p>@Html.ActionLink($"{classroom.CourseName}", "Details", new { id = classroom.ClassroomId})</p>
+  }
 }
 
-@Html.ActionLink("Add a new Classroom", "Create")
-@Html.ActionLink("Home", "Index", "Home")
+

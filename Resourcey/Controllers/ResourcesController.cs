@@ -57,7 +57,7 @@ namespace Resourcey.Controllers
     {
       _db.Entry(resource).State = EntityState.Modified;
       _db.SaveChanges();
-      return RedirectToAction("Details", "Section", new { id = resource.SectionId });
+      return RedirectToAction("Details", "Sections", new { id = resource.SectionId });
     }
 
     public ActionResult Delete(int id)
@@ -72,7 +72,7 @@ namespace Resourcey.Controllers
       var thisResource = _db.Resources.FirstOrDefault(resource => resource.ResourceId == id);
       _db.Resources.Remove(thisResource);
       _db.SaveChanges();
-      return RedirectToAction("Details", "Section", new { id = thisResource.SectionId });
+      return RedirectToAction("Details", "Sections", new { id = thisResource.SectionId });
     }
   }
 }

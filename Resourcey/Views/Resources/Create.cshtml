@@ -18,9 +18,6 @@
   @Html.LabelFor(model => model.ResourceUrl)
   @Html.TextBoxFor(model => model.ResourceUrl)
 
-  @* @Html.LabelFor(model => model.Type)
-  @Html.GetEnumSelectList *@
-
   <select asp-for="Type" asp-items="Html.GetEnumSelectList<ResourceType>()" ></select> 
 
   @Html.LabelFor(model => model.Description)
