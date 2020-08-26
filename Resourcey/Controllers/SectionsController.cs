@@ -57,7 +57,7 @@ public class SectionsController : Controller
     {
       _db.Entry(section).State = EntityState.Modified;
       _db.SaveChanges();
-      return RedirectToAction("Details", "Classroom", new {id = section.ClassroomId});
+      return RedirectToAction("Details", "Classrooms", new {id = section.ClassroomId});
     }
 
     public ActionResult Delete(int id)
@@ -72,7 +72,7 @@ public class SectionsController : Controller
       var thisSection = _db.Sections.FirstOrDefault(sections => sections.SectionId == id);
       _db.Sections.Remove(thisSection);
       _db.SaveChanges();
-      return RedirectToAction("Details", "Classroom", new {id = thisSection.ClassroomId});
+      return RedirectToAction("Details", "Classrooms", new {id = thisSection.ClassroomId});
     }
   }
 }

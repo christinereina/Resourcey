@@ -18,15 +18,21 @@ public class ClassroomsController : Controller
   {
     
     private readonly ApplicationDbContext _db; 
-    private readonly UserManager <ApplicationUser> _userManager; 
+    private readonly UserManager <ApplicationUser> _userManager;
+    private readonly IAuthorizationService _authorizationService; 
 
-    public ClassroomsController (UserManager<ApplicationUser> userManager, ApplicationDbContext db)
+    public ClassroomsController (UserManager<ApplicationUser> userManager, ApplicationDbContext db, IAuthorizationService authorizationService)
     {
       _userManager = userManager; 
-      _db = db; 
+      _db = db;
+      _authorizationService = authorizationService;
     }
 
-    public async Task <ActionResult> Index ()
+    public ActionResult Index ()
+    {     
+      return View (_db.Classrooms.ToList());
+    }
+    public async Task <ActionResult> YourClassrooms ()
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);

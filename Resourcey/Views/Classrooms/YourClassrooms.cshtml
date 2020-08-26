@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Resourcey.Models;
+@using System.Security.Claims;
+@model IEnumerable<Resourcey.Models.Classroom>
+
+<h1>Classroom</h1>
+
+@if (@Model.Any())
+{
+
+  @foreach (Classroom classroom in Model)
+  {
+    @Html.ActionLink($"{classroom.CourseName}", "Details", new { id = classroom.ClassroomId } )
+  }
+}
+else
+{
+    <h2>No Classrooms have been added just yet!</h2>
+}
+
+@Html.ActionLink("Add a new Classroom", "Create")
+@Html.ActionLink("Home", "Index", "Home")
