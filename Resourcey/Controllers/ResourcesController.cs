@@ -35,12 +35,14 @@ namespace Resourcey.Controllers
     {
       _db.Resources.Add(resource);
       _db.SaveChanges();
-      return RedirectToAction("Details", "Section", new { id = resource.SectionId }); 
+      return RedirectToAction("Details", "Sections", new { id = resource.SectionId }); 
     }
 
     public ActionResult Details(int id)
     {
-      var thisResource = _db.Resources.FirstOrDefault(resource => resource.ResourceId == id);
+      var thisResource = _db.Resources
+      .Include(resource => resource.Section)
+      .FirstOrDefault(resource => resource.ResourceId == id);
       return View(thisResource);
     }
 

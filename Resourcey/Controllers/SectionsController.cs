@@ -24,9 +24,8 @@ public class SectionsController : Controller
       _db = db;
     }
 
-    public ActionResult Create(int classroomId)
+    public ActionResult Create()
     {
-      ViewBag.ClassroomId = classroomId;
       return View();
     }
 
@@ -35,7 +34,7 @@ public class SectionsController : Controller
     {
       _db.Sections.Add(section);
       _db.SaveChanges();
-      return RedirectToAction("Details", "Classroom", new {id = section.ClassroomId}); 
+      return RedirectToAction("Details", "Classrooms", new {id = section.ClassroomId}); 
     }
 
     public ActionResult Details(int id)
@@ -43,6 +42,7 @@ public class SectionsController : Controller
       var thisSection = _db.Sections
       .Include(section => section.Resources)
       .FirstOrDefault(section => section.SectionId == id);
+      TempData["sectionId"] = id;
       return View(thisSection);
     }
 

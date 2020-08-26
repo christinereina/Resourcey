@@ -56,6 +56,7 @@ public class ClassroomsController : Controller
       var thisClassroom = _db.Classrooms
       .Include(classroom => classroom.Sections)
       .FirstOrDefault(classroom => classroom.ClassroomId == id);
+      TempData["classroomId"] = id;
       return View(thisClassroom);
     }
 

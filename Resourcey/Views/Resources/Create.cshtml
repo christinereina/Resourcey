@@ -18,18 +18,17 @@
   @Html.LabelFor(model => model.ResourceUrl)
   @Html.TextBoxFor(model => model.ResourceUrl)
 
-  @Html.LabelFor(model => model.Type)
-  @Html.GetEnumSelectList(typeof(ResourceType))
+  @* @Html.LabelFor(model => model.Type)
+  @Html.GetEnumSelectList *@
+
+  <select asp-for="Type" asp-items="Html.GetEnumSelectList<ResourceType>()" ></select> 
 
   @Html.LabelFor(model => model.Description)
   @Html.TextBoxFor(model => model.Description)
 
-  @Html.HiddenFor(model => model.SectionId)
+  @Html.Hidden("SectionId", TempData["sectionId"])
 
-  @Html.Label("Select Section")
-  @Html.DropDownList("SectionId")
-
-  <input type="submit" value="Add Classroom" class="btn-btn-default"/>
+  <input type="submit" value="Add Resource" class="btn-btn-default"/>
 
 }
 
