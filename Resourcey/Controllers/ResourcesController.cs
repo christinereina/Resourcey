@@ -25,25 +25,38 @@ namespace Resourcey.Controllers
     }
 
     public ActionResult Create(int sectionId)
-    {
+    {      
       ViewBag.SectionId = sectionId;
       return View();
     }
 
     [HttpPost]
-    public ActionResult Create(Resource resource)
+    public async Task<ActionResult> Create(Resource resource)
     {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      resource.ResourceCreator = currentUser;
       _db.Resources.Add(resource);
       _db.SaveChanges();
       return RedirectToAction("Details", "Sections", new { id = resource.SectionId }); 
     }
 
-    public ActionResult Details(int id)
+    public async Task<ActionResult> Details(int id)
     {
       var thisResource = _db.Resources
       .Include(resource => resource.Section)
+      .Include(resource => resource.Section.Classroom)
       .FirstOrDefault(resource => resource.ResourceId == id);
-      return View(thisResource);
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      if(currentUser == thisResource.Section.Classroom.ClassroomCreator || currentUser == thisResource.ResourceCreator)
+      {
+        return View("Details", thisResource);
+      }
+      else 
+      {
+      return View("StudentDetails", thisResource);
+      }
     }
 
     public ActionResult Edit(int id)

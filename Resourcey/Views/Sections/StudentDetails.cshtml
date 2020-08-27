@@ -1,3 +1,4 @@
+
 @{
   Layout = "_Layout";
 }
@@ -11,7 +12,7 @@
 
 @if(@Model.Resources.Count == 0)
 {
-  <p>There are no resources yet.</p>
+  <p>This section doesn't have any resources.</p>
 }
 else
 {
@@ -24,7 +25,5 @@ else
   </ul>
 }
 
-<button type="button" class="btn btn-warning">@Html.ActionLink("Create a resource", "Create", "Resources")</button>
-
-<p>@Html.ActionLink("Edit section", "Edit", new { id = Model.SectionId })</p>
-<p>@Html.ActionLink("Delete section", "Delete", new { id = Model.SectionId })</p>
+<p>@Html.ActionLink("Add a resource", "Create", "Resources")</p>
+<p>@Html.ActionLink("Back to classroom", "Classrooms", "Details", new { id = Model.ClassroomId })</p>

@@ -2,6 +2,7 @@
   Layout = "_Layout";
 }
 
+@using Resourcey.Enums
 @model Resourcey.Models.Resource
 
 <h2>Edit</h2>
@@ -16,7 +17,7 @@
     @Html.EditorFor(model => model.Name)
 
     @Html.Label("Type of Resource")
-    @Html.DropDownList("ResourceType") //Link to enums??
+    <select asp-for="Type" asp-items="Html.GetEnumSelectList<ResourceType>()" ></select>
 
     <input type="submit" value="Save" />
 }
