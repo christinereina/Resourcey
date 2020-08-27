@@ -10,16 +10,20 @@
 
 @if (@Model.Any())
 {
-
+<div class="container">
+  <div class="row">
   @foreach (Classroom classroom in Model)
   {
-    @Html.ActionLink($"{classroom.CourseName}", "Details", new { id = classroom.ClassroomId } ) <br>
+    <div class="col-sm-4"><p>@Html.ActionLink($"{classroom.CourseName}", "Details", new { id = classroom.ClassroomId } )<p></div>
   }
+  </div>
+</div>
 }
 else
 {
     <h2>No Classrooms have been added just yet!</h2>
 }
 
-@Html.ActionLink("Add a new Classroom", "Create")
-@Html.ActionLink("Home", "Index", "Home")
+<button type="button" class="btn btn-warning">@Html.ActionLink("Add a new Classroom", "Create")</button>
+
+
