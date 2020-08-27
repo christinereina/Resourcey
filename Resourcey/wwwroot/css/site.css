@@ -97,3 +97,7 @@ font-size: 26px;
 #notebookIcon {
   width: 25%;
 }
+
+#sectionDetailsContent {
+  height: 40vh;
+}

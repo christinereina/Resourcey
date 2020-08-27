@@ -20,10 +20,10 @@ else
   <ul>
     @foreach (var resource in Model.Resources)
     {
-      @Html.ActionLink($"{resource.Name}", "Details", "Resources", new { id = resource.ResourceId } )
+      <div class="col-sm-4" id ="sectionDetailsContent"><p> </p><img src="~/img/openBook.png" id="bookIcon">@Html.ActionLink($"{resource.Name}", "Details", "Resources", new { id = resource.ResourceId } )</p></div>
     }
   </ul>
 }
 
-<p>@Html.ActionLink("Add a resource", "Create", "Resources")</p>
-<p>@Html.ActionLink("Back to classroom", "Classrooms", "Details", new { id = Model.ClassroomId })</p>
+<button type="button" class="btn btn-warning">@Html.ActionLink("Add a resource", "Create", "Resources")</button>
+<button type="button" class="btn btn-warning">@Html.ActionLink("Back to classroom", "Classrooms", "Details", new { id = Model.ClassroomId })</button>

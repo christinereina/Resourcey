@@ -15,11 +15,11 @@ else
 <h4> Section</h4>
 @foreach(Section x in Model.Sections)
   {
-    @Html.ActionLink($"{x.Name}", "Details", "Sections", new { id = x.SectionId } )
+    <p>@Html.ActionLink($"{x.Name}", "Details", "Sections", new { id = x.SectionId } )</p>
   }
 }
 
-<p>@Html.ActionLink("Add a section", "Create", "Sections")</p>
-<p>@Html.ActionLink("Back to Courses", "Index")</p>
-<p>@Html.ActionLink("Edit Course", "Edit", new { id = Model.ClassroomId })</p>
-<p>@Html.ActionLink("Delete Class", "Delete", new { id = Model.ClassroomId })</p>
+<button type="button" class="btn btn-warning">@Html.ActionLink("Add a section", "Create", "Sections")</button>
+<button type="button" class="btn btn-warning">@Html.ActionLink("Back to Courses", "Index")</button>
+<button type="button" class="btn btn-warning">@Html.ActionLink("Edit Course", "Edit", new { id = Model.ClassroomId })</button>
+<button type="button" class="btn btn-warning">@Html.ActionLink("Delete Class", "Delete", new { id = Model.ClassroomId })</button>
