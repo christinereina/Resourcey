@@ -1,7 +1,12 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-a.navbar-brand {
+* {
+  box-shadow: none !important;
+}
+
+
+  a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
@@ -63,5 +68,32 @@ body {
 /* Home Pg IMG styling
 -------------------------------------------------- */
 .scene {
-  max-width: 50vw;
+  max-width: 45vw;
+}
+
+/* Set height for grid items
+-------------------------------------------------- */
+#myClassroomContent, #classroomContent {
+  height: 20vh;
+}
+
+#bookIcon {
+  width: 30%;
+}
+
+#yourclassroombtn {
+  float: right;
+  margin-left: 1em;
+}
+
+#yourClassroomContainer {
+  margin: 2em;
+}
+
+#resourceyLogo {
+font-size: 26px;
+}
+
+#notebookIcon {
+  width: 25%;
 }
