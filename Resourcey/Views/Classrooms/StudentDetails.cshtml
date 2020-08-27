@@ -3,23 +3,31 @@
 }
 
 @model Resourcey.Models.Classroom
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+    <br>
+   <button type="button">@Html.ActionLink("Back to Courses", "Index", null, null, null, null, null, new{@class="button-styles "})</button><br><br>
+    </div>
+    <div class="col-sm-6 background-color:#f1f1f1">
+      <h1 class="center">@Html.DisplayFor(model => model.CourseName)</h1>
 
-<h2>Class Details</h2>
+      @if(Model.Sections.Count == 0)
+        {
+          <p class="center"> This course doesn't have any sections yet</p>
+        }
+        else
+        {
+      <h4 class="center">Sections</h4>
+      @foreach(Section x in Model.Sections)
+      {
+      <p class="center">@Html.ActionLink($"{x.Name}", "Details", "Sections", new { id = x.SectionId } )</p>
+      }
+      }
+   
+    </div>
+    <div class="col-sm-3">
+  </div>
+ 
+</div>
 
-<h3>Course Name: @Html.DisplayFor(model => model.CourseName)</h3>
-
-@if(Model.Sections.Count == 0)
-{
-  <p> This course doesn't have any sections yet</p>
-}
-else
-{
-<h4> Section</h4>
-@foreach(Section x in Model.Sections)
-  {
-    @Html.ActionLink($"{x.Name}", "Details", "Sections", new { id = x.SectionId } )
-  }
-}
-
-
-<p>@Html.ActionLink("Back to Courses", "Index")</p>

@@ -7,7 +7,7 @@
 
 <h1>Section Details</h1>
 <hr/>
-
+<div>
 <h2>@Html.DisplayFor(model => model.Name)</h2>
 
 @if(@Model.Resources.Count == 0)
@@ -20,10 +20,12 @@ else
   <ul>
     @foreach (var resource in Model.Resources)
     {
-      <div class="col-sm-4" id ="sectionDetailsContent"><p> </p><img src="~/img/openBook.png" id="bookIcon">@Html.ActionLink($"{resource.Name}", "Details", "Resources", new { id = resource.ResourceId } )</p></div>
+      <div class="col-sm-4" id ="sectionDetailsContent"><p><img src="~/img/openBook.png" id="bookIcon"></p>@Html.ActionLink($"{resource.Name}", "Details", "Resources", new { id = resource.ResourceId } )</div>
     }
   </ul>
 }
+</div>
 
-<button type="button" class="btn btn-warning">@Html.ActionLink("Add a resource", "Create", "Resources")</button>
-<button type="button" class="btn btn-warning">@Html.ActionLink("Back to classroom", "Classrooms", "Details", new { id = Model.ClassroomId })</button>
+<button type="button">@Html.ActionLink("Add a resource", "Create", "Resources", null, null, null, null, new{@class="button-styles"})</button>
+<button type="button">@Html.ActionLink("Back to classroom", "Details", "Classrooms",  null, null, null, new { id = Model.ClassroomId }, new {@class="button-styles"})</button>
+

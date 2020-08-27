@@ -5,21 +5,33 @@
 @using Resourcey.Enums
 @model Resourcey.Models.Resource
 
-<h2>Edit</h2>
+<h1>Edit This Resource</h1>
 
-<h4>Edit this resource: @Html.DisplayFor(model => model.Name)</h4>
+<div class="card">
+  <div class="card-header">
+      <h1 class="card-title">@Html.DisplayFor(model => model.Name)</h1>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
 
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.ResourceId)
 
-    @Html.LabelFor(model => model.Name)
-    @Html.EditorFor(model => model.Name)
+    <p>@Html.LabelFor(model => model.Name): @Html.EditorFor(model => model.Name) </p>
 
-    @Html.Label("Type of Resource")
-    <select asp-for="Type" asp-items="Html.GetEnumSelectList<ResourceType>()" ></select>
+    <p>@Html.HiddenFor(model => model.ResourceUrl)</p>
+    <p>@Html.HiddenFor(model => model.SectionId)</p>
+
+    <p>@Html.LabelFor(model => model.Description): @Html.EditorFor(model => model.Description)</p>
+
+    <p>@Html.HiddenFor(model => model.Date)</p>
+
+    <p>@Html.Label("Type of Resource")
+    <select asp-for="Type" asp-items="Html.GetEnumSelectList<ResourceType>()" ></select></p>
 
     <input type="submit" value="Save" />
 }
 
-@Html.ActionLink("Back to Classroom", "Index", "Classrooms")
+  </div>
+</div>

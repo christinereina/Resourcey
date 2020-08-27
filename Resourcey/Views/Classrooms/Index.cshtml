@@ -7,22 +7,23 @@
 
 <div class="container" id="yourClassroomContainer">
   <div class="row align-items-center">
-<h1>All Classrooms</h1><button type="button" class="btn btn-warning" id="yourclassroombtn">@Html.ActionLink("Create one here", "Create")</button>
+<h1>All Classrooms</h1>
+<button type="button" id="yourclassroombtn">@Html.ActionLink("Create one here", "Create", null, null, new{@class="button-styles"})</button>
   </div>
 </div>
 
 @if(@Model.Count == 0)
 {
   <p>There are no classrooms!</p>
-  <button type="button" class="btn btn-warning">@Html.ActionLink("Create one here", "Create")</button>
+  <button type="button" class="btn btn-warning">@Html.ActionLink("Create one here", "Create", null, null,  new{@class="button-styles"})</button>
 }
 else
 {
 <div class="container">
-  <div class="row">
+  <div class="row align-items-center">
     @foreach(Classroom classroom in Model)
     {
-      <div class="col-sm-4" id="classroomContent"><img src="~/img/Notebook.png" id="notebookIcon"><p>@Html.ActionLink($"{classroom.CourseName}", "Details", new { id = classroom.ClassroomId})</p></div>
+      <div class="col-sm-4" id="Classroom"><img src="~/img/openBook.png" id="notebookIcon"><br><button>@Html.ActionLink($"{classroom.CourseName}", "Details", new { id = classroom.ClassroomId}, new{@class="button-styles"})</button></div>
     }
   </div>
 </div>

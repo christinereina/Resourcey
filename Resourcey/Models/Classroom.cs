@@ -9,6 +9,7 @@ namespace Resourcey.Models
     {
       this.Sections = new HashSet<Section>();
     }
+    [Required]
     public string CourseName {get; set;}
     public int ClassroomId {get; set;}
     public virtual ApplicationUser ClassroomCreator {get; set;}

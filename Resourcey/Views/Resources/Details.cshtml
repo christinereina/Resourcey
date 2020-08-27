@@ -7,18 +7,18 @@
 
 <div class="card">
   <div class="card-header">
-      <h5 class="card-title"><h3>@Html.DisplayFor(model => model.Name)</h3></h5>
+      <h1 class="card-title">@Html.DisplayFor(model => model.Name)</h1>
   </div>
   <div class="card-body">
     <p class="card-text">
 
-<h3>@Html.DisplayNameFor(model => model.Date): @Html.DisplayFor(model => model.Date)</h3>
-<h3> @Html.DisplayNameFor(model => model.ResourceUrl): @Html.DisplayFor(model => model.ResourceUrl)</h3>
-<h3>@Html.DisplayNameFor(model => model.Type): @Html.DisplayFor(model => model.Type)</h3>
-<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
-<h3>@Html.DisplayNameFor(model => model.Section): @Html.DisplayFor(model => model.Section.Name)</h3>
+<p>@Html.DisplayNameFor(model => model.Date): @Html.DisplayFor(model => model.Date)</p>
+<p>@Html.DisplayNameFor(model => model.ResourceUrl): <a href="@Model.ResourceUrl">@Model.ResourceUrl</a></p>
+<p>@Html.DisplayNameFor(model => model.Type): @Html.DisplayFor(model => model.Type)</p>
+<p>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</p>
+<p>@Html.DisplayNameFor(model => model.Section): @Html.DisplayFor(model => model.Section.Name)</p>
   </div>
 </div>
 
-@Html.ActionLink("Delete Resource", "Delete", new { id = Model.ResourceId })
-@Html.ActionLink("Edit Resource", "Edit", new { id = Model.ResourceId })
+<button type="button">@Html.ActionLink("Edit Resource", "Edit", null, new { id = Model.ResourceId }, new{@class="button-styles"})</button>
+<button type="button">@Html.ActionLink("Delete Resource", "Delete", null, new { id = Model.ResourceId }, new{@class="button-styles"})</button>

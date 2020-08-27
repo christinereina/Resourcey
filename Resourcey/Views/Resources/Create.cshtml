@@ -15,17 +15,17 @@
     <p class="card-text">
       @using (Html.BeginForm())
 {
+
   <p>@Html.TextBoxFor(model => model.Name, new { placeholder = "Resource Name" })</p>
 
-  <p>@Html.TextBoxFor(model => model.Date, new { placeholder = "Section Add Date" })</p>
-
-  <p> @Html.TextBoxFor(model => model.ResourceUrl, new { placeholder = "Resource Url" })</p>
+    <p> @Html.TextBoxFor(model => model.ResourceUrl, new { placeholder = "Resource Url" })</p>
 
   <p>@Html.TextBoxFor(model => model.Description, new { placeholder = "Resource Description" })</p>
 
   @Html.Hidden("SectionId", TempData["sectionId"])
+  @Html.Hidden("Date", DateTime.Now.ToShortDateString(), null)
 
-  <p> <input type="submit" value="Add Resource" class="btn btn-primary"/></p>
+  <p><input type="submit" value="Add Resource" class="button-styles" /></p>
 
 }
   </div>

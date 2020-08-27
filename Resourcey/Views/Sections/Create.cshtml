@@ -3,7 +3,7 @@
 }
 
 @model Resourcey.Models.Section
-
+<div class="container">
 <h1>Add Section</h1>
 @using (Html.BeginForm())
 {
@@ -11,5 +11,8 @@
 
   @Html.Hidden("ClassroomId", TempData["classroomId"])
 
-  <input type="submit" value="Add new section" class="btn btn-default"/>
+  <input type="submit" value="Add new section" class="button-styles"/>
 }
+</div>
+
+

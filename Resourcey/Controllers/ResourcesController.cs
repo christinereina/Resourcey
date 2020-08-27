@@ -59,10 +59,22 @@ namespace Resourcey.Controllers
       }
     }
 
-    public ActionResult Edit(int id)
+    public async Task<ActionResult> Edit(int id)
     {
-      var thisResource = _db.Resources.FirstOrDefault(resource => resource.ResourceId == id);
-      return View(thisResource);
+      var thisResource = _db.Resources
+      .Include(resource => resource.Section)
+      .Include(resource => resource.Section.Classroom)
+      .FirstOrDefault(resource => resource.ResourceId == id);
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      if(currentUser == thisResource.Section.Classroom.ClassroomCreator || currentUser == thisResource.ResourceCreator)
+      {
+        return View(thisResource);
+      }
+      else
+      {
+        return RedirectToAction("Index", "Classrooms");
+      }
     }
 
     [HttpPost]
@@ -73,10 +85,22 @@ namespace Resourcey.Controllers
       return RedirectToAction("Details", "Sections", new { id = resource.SectionId });
     }
 
-    public ActionResult Delete(int id)
+    public async Task<ActionResult> Delete(int id)
     {
-      var thisResource = _db.Resources.FirstOrDefault(resource => resource.ResourceId == id);
-      return View(thisResource);
+      var thisResource = _db.Resources
+      .Include(resource => resource.Section)
+      .Include(resource => resource.Section.Classroom)
+      .FirstOrDefault(resource => resource.ResourceId == id);
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      if(currentUser == thisResource.Section.Classroom.ClassroomCreator || currentUser == thisResource.ResourceCreator)
+      {
+        return View(thisResource);
+      }
+      else
+      {
+        return RedirectToAction("Index", "Classrooms");
+      }
     }
 
     [HttpPost, ActionName("Delete")]

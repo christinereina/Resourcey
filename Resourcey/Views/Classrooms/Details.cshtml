@@ -3,23 +3,41 @@
 }
 
 @model Resourcey.Models.Classroom
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <br><br><br>
+      <button type="button" >@Html.ActionLink("Add a section", "Create", "Sections", null, null, null, null, new{@class="button-styles"})</button><br><br>
+      <button type="button" >@Html.ActionLink("Edit Course", "Edit", null, null, null, null, new { id = Model.ClassroomId }, new{@class="button-styles"})</button><br><br>
+      <button type="button" >@Html.ActionLink("Delete Class", "Delete", null, null, null, null, new { id = Model.ClassroomId }, new{@class="button-styles"})</button><br><br>
+      <button type="button">@Html.ActionLink("Back to Courses", "Index", null, null, null, null, null, new{@class="button-styles"})</button><br><br>
+     
+    </div>
+    <div class="col-sm-6">
+      <h1 class="center">@Html.DisplayFor(model => model.CourseName)</h1>
 
-<h1>@Html.DisplayFor(model => model.CourseName)</h1>
-
-@if(Model.Sections.Count == 0)
-{
-  <p> This course doesn't have any sections yet</p>
-}
-else
-{
-<h4> Section</h4>
-@foreach(Section x in Model.Sections)
-  {
-    <p>@Html.ActionLink($"{x.Name}", "Details", "Sections", new { id = x.SectionId } )</p>
-  }
-}
-
-<button type="button" class="btn btn-warning">@Html.ActionLink("Add a section", "Create", "Sections")</button>
-<button type="button" class="btn btn-warning">@Html.ActionLink("Back to Courses", "Index")</button>
-<button type="button" class="btn btn-warning">@Html.ActionLink("Edit Course", "Edit", new { id = Model.ClassroomId })</button>
-<button type="button" class="btn btn-warning">@Html.ActionLink("Delete Class", "Delete", new { id = Model.ClassroomId })</button>
+      @if(Model.Sections.Count == 0)
+        {
+          <p class="center"> This course doesn't have any sections yet</p>
+        }
+        else
+        {
+      <h4 class="center">Sections</h4>
+      @foreach(Section x in Model.Sections)
+      {
+      <p class="center">@Html.ActionLink($"{x.Name}", "Details", "Sections", new { id = x.SectionId } )</p>
+      }
+      }
+    </div>
+    <div class="col-sm-3">
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+     
+    </div>
+    <div class="col-md-3">
+    @*<img src="~/img/scene.png" class="scene">*@
+    </div>
+  </div>
+  
+</div>

@@ -8,10 +8,10 @@
 
 @using (Html.BeginForm())
 {
-   @Html.HiddenFor(model => model.ClassroomId)
+    @Html.HiddenFor(model => model.ClassroomId)
 
     @Html.EditorFor(model => model.CourseName)
 
-    <input type="submit" value="save" />
+    <input type="submit" value="save" class="button-styles"/>
 }
 
