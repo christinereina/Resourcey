@@ -37,19 +37,38 @@ public class SectionsController : Controller
       return RedirectToAction("Details", "Classrooms", new {id = section.ClassroomId}); 
     }
 
-    public ActionResult Details(int id)
+    public async Task<ActionResult> Details(int id)
     {
       var thisSection = _db.Sections
       .Include(section => section.Resources)
+      .Include(section => section.Classroom)
       .FirstOrDefault(section => section.SectionId == id);
       TempData["sectionId"] = id;
-      return View(thisSection);
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      if(currentUser == thisSection.Classroom.ClassroomCreator)
+      {
+        return View("Details", thisSection);
+      }
+      else
+      {
+        return View("StudentDetails", thisSection);
+      }
     }
 
-    public ActionResult Edit(int id)
+    public async Task<ActionResult> Edit(int id)
     {
-      var thisSection = _db.Sections.FirstOrDefault(section => section.SectionId == id);
-      return View(thisSection);
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      var thisSection = _db.Sections.Include(section => section.Classroom).FirstOrDefault(section => section.SectionId == id);
+      if(currentUser == thisSection.Classroom.ClassroomCreator)
+      {
+        return View(thisSection);
+      }
+      else
+      {
+        return RedirectToAction("Index", "Classrooms");
+      }
     }
 
     [HttpPost]
@@ -60,10 +79,19 @@ public class SectionsController : Controller
       return RedirectToAction("Details", "Classrooms", new {id = section.ClassroomId});
     }
 
-    public ActionResult Delete(int id)
+    public async Task<ActionResult> Delete(int id)
     {
-      var thisSection = _db.Sections.FirstOrDefault(section => section.SectionId == id);
-      return View(thisSection);
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      var thisSection = _db.Sections.Include(section => section.Classroom).FirstOrDefault(section => section.SectionId == id);
+      if(currentUser == thisSection.Classroom.ClassroomCreator)
+      {
+        return View(thisSection);
+      }
+      else
+      {
+        return RedirectToAction("Index", "Classrooms");
+      }
     }
 
     [HttpPost, ActionName("Delete")]

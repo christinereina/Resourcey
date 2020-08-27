@@ -13,7 +13,7 @@
 
   @foreach (Classroom classroom in Model)
   {
-    @Html.ActionLink($"{classroom.CourseName}", "Details", new { id = classroom.ClassroomId } )
+    @Html.ActionLink($"{classroom.CourseName}", "Details", new { id = classroom.ClassroomId } ) <br>
   }
 }
 else

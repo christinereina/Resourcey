@@ -19,26 +19,23 @@ public class ClassroomsController : Controller
     
     private readonly ApplicationDbContext _db; 
     private readonly UserManager <ApplicationUser> _userManager;
-    private readonly IAuthorizationService _authorizationService; 
 
-    public ClassroomsController (UserManager<ApplicationUser> userManager, ApplicationDbContext db, IAuthorizationService authorizationService)
+    public ClassroomsController (UserManager<ApplicationUser> userManager, ApplicationDbContext db)
     {
       _userManager = userManager; 
       _db = db;
-      _authorizationService = authorizationService;
     }
 
     public ActionResult Index ()
     {     
       return View (_db.Classrooms.ToList());
     }
-    public async Task <ActionResult> YourClassrooms ()
+    public async Task <ActionResult> YourClassrooms () //specific to the user
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
       var userClassroom = _db.Classrooms.Where(entry => entry.ClassroomCreator.Id == currentUser.Id);
       return View (userClassroom);
-
     }
 
     public ActionResult Create()
@@ -56,20 +53,38 @@ public class ClassroomsController : Controller
       _db.SaveChanges(); 
       return RedirectToAction("Index");
     }
-
-    public ActionResult Details(int id)
+    
+    public async Task<ActionResult> Details(int id) 
     {
       var thisClassroom = _db.Classrooms
       .Include(classroom => classroom.Sections)
       .FirstOrDefault(classroom => classroom.ClassroomId == id);
       TempData["classroomId"] = id;
-      return View(thisClassroom);
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      if(currentUser == thisClassroom.ClassroomCreator)
+      {
+        return View("Details", thisClassroom);
+      }
+      else 
+      {
+      return View("StudentDetails", thisClassroom);
+      }
     }
 
-    public ActionResult Edit(int id)
+    public async Task<ActionResult> Edit(int id) 
     {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
       var thisClassroom = _db.Classrooms.FirstOrDefault(classroom => classroom.ClassroomId == id);
-      return View(thisClassroom);
+      if(currentUser == thisClassroom.ClassroomCreator)
+      {
+        return View(thisClassroom);
+      }
+      else
+      {
+        return RedirectToAction("Index");
+      }
     }
 
     [HttpPost]
@@ -80,10 +95,19 @@ public class ClassroomsController : Controller
       return RedirectToAction("Index");
     }
 
-    public ActionResult Delete(int id)
+    public async Task <ActionResult> Delete(int id) 
     {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
       var thisClassroom = _db.Classrooms.FirstOrDefault(classroom => classroom.ClassroomId == id);
-      return View(thisClassroom);
+      if(currentUser == thisClassroom.ClassroomCreator)
+      {
+        return View(thisClassroom);
+      }
+      else
+      {
+        return RedirectToAction("Index");
+      }
     }
 
     [HttpPost, ActionName("Delete")]
