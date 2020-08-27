@@ -65,8 +65,6 @@ As a user I want to be able to create an account and log-in so that I can user t
 
 ## Support and contact details
 
-----
-
 | [<img src = "https://avatars2.githubusercontent.com/u/64601502?s=460&u=6e3ec9021f0e9990fa27ea14f27118ec463836e8&v=4" width=100 alt="GitHub avatar for author TeresaRosinski">](https://github.com/TeresaRosinski)  | [<img src="https://avatars3.githubusercontent.com/u/7584520?s=460&u=bc57fe09fa38c3fca71b16737bd286b1aed42bf7&v=4" width=100 alt="GitHub avatar for author sarakane">](https://github.com/sarakane) | [<img src="https://avatars2.githubusercontent.com/u/59573479?s=460&u=e7d78b19bca6fa8cd01bec4cd7c3c120a0fd80b4&v=4" width=100 alt="GitHub avatar for author christinereina">](https://github.com/christinereina)| [<img src="https://avatars1.githubusercontent.com/u/56702098?s=460&u=e066db21b2f97b9d09fb02d56aa4d29dab45db44&v=4" width=100 alt="GitHub avatar for author HBeinstein">](https://github.com/HBeinstein) |
 |:-----:|:-----:|:-----:|:-----:|
 | [**TeresaRosinski**](https://github.com/TeresaRosinski) | [**sarakane**](https://github.com/sarakane) | [**christinereina**](https://github.com/christinereina) | [**HBeinstein**](https://github.com/HBeinstein) |
