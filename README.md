@@ -13,12 +13,13 @@
 
 ---
 ## Description
- This is a great application developed to help learners and teachers. 
- 
- **For Students:** This app allows you to visit virtual classrooms to view resources other students and teachers have found to be helpful for specifc parts of the curriculum. Think: helpful youtube tutorials. You are also able to add resources that you have found to be helpful to specific sections of any classroom. 
- 
- **For Teachers:** This app will allow you to create a virtual resource classroom. Here, you can take your syllabus and divide it into as many sections as you'd like. In each section you can add helpful resources for your students. With this app, hopefully less of your time can be spent on finding resources for your curriculum, that you often will teach multiple semster or terms, and more time on instruction.
- 
+
+An application developed to help learners and teachers.
+
+For Teachers: This app will allow you to create a virtual resource classroom. Here, you can take your syllabus and divide it into as many sections as you'd like. In each section you can add helpful resources for your students. With this app, hopefully less of your time can be spent on finding resources for your curriculum, that you often will teach multiple semester or terms, and more time on instruction.
+
+For Students: This app allows you to visit virtual classrooms to view resources other students and teachers have found to be helpful for specific parts of the curriculum. Think: helpful youtube tutorials. You are also able to add resources that you have found to be helpful to specific sections of any classroom.
+
 ## User Stories
 
 As a user I want to be able to create an account and log-in so that I can user the program.
